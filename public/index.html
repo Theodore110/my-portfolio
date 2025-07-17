@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --accent-color: #87CEEB;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #5F9B9B, gray, #4A5C6A, grey);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glass Morphism Effect */
+        .glass-card {
+            background: rgba(26, 26, 46, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(135, 206, 235, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 1px solid rgba(135, 206, 235, 0.2);
+        }
+
+        .glass-card:hover .project-img {
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(135, 206, 235, 0.2);
+        }
+
+        /* Split Layout */
+        .split-container {
+            display: flex;
+            min-height: 100vh;
+            position: relative
+        }
+        
+        .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem;
+        }
+        
+        .right-section {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a5d4?q=80&w=1500') center/cover no-repeat;
+            position: relative;
+        }
+        
+        .right-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 18, 18, 0.5);
+            backdrop-filter: blur(2px);
+        }
+        
+        /* Content Styling */
+        .portfolio-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #87CEEB, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .nav-links a {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+        }
+
+        .hover-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .image-container {
+            position: relative;
+            width: 300px;
+        }
+
+        .image-container img {
+            display: block;
+        }
+        .image-container:hover .hover-text {
+            opacity: 1;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .split-container {
+                flex-direction: column;
+            }
+            
+            .right-section {
+                min-height: 50vh;
+                order: -1;
+            }
+            
+            .portfolio-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="gradient-bg"></div>
+    
+    <!-- Main Content -->
+    <div class="split-container">
+        <!-- Left Section - Content -->
+        <div class="left-section" id="home">
+            <div class="glass-card p-4 p-lg-5 mb-5">
+                <h1 class="portfolio-title">Welcome to My Portfolio</h1>
+                <p class="lead">My name is <strong>Thato Theodore Choma</strong> and I am a final year Computer Science student in the University of the Free State, a certified Full Stack Developer and I am currently freelancing. I am open to a temporary or permanent position in an organization looking for a young, skilled developer.</p>
+            </div>
+            
+            <div class="glass-card p-4 p-lg-5 mb-5">
+                <h2 class="mb-4"><i class="bi bi-star-fill text-info me-2"></i>Skills</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="p-3  image-container">
+                            <h2 class="p-2"><img src="images/c-sharp.png" alt="C-sharp logo" class="w-10 h-auto"/></h2>
+                            <p class="hover-text">C#</p>
+                        </div>
+                        <div class="p-3 image-container">
+                            <p class="hover-text">HTML5</p>
+                            <h2 class="p-2"><img src="images/html-logo.png" alt="html logo" class="w-10 h-auto"/></h2>
+                        </div>
+                        <div class="p-3 border-bottom border-info image-container">
+                            <p class="hover-text">Python</p>
+                            <h2 class="p-2"><img src="images/python-logo.png" alt="html logo" class="w-10 h-auto"/></h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 image-container">
+                            <p class="hover-text">CSS</p>
+                            <h2 class="p-2"><img src="images/css-logo.png" alt="CSS logo" class="w-10 h-auto"/></h2>
+                        </div>
+                        <div class="p-3 image-container">
+                            <p class="hover-text">JavaScript</p>
+                            <h2 class="p-2"><img src="images/js-logo.png" alt="JS logo" class="w-10 h-auto"/></h2>
+                        </div>
+                        <div class="p-3 border-bottom border-info image-container">
+                            <p class="hover-text">SQL</p>
+                            <h2 class="p-2"><img src="images/sql-logo.png" alt="SQL logo" class="w-10 h-auto"/></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 p-lg-5">
+                <h2 class="mb-4"><i class="bi bi-star-fill text-info me-2"></i>Frameworks</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="p-3 image-container">
+                            <p class="hover-text">.NET</p>
+                            <h2 class="p-2"><img src="images/dot-net.png" alt="Dot NET logo" class="w-10 h-auto"/></h2>
+                        </div>
+                        <div class="p-3 image-container">
+                            <p class="hover-text">ASP .NET</p>
+                            <h2 class="p-2"><img src="images/asp-net.png" alt="ASP NET logo" class="w-10 h-auto"/></h2>
+                        </div>
+                        <div class="p-3 border-bottom border-info image-container">
+                            <p class="hover-text">DJANGO</p>
+                            <h2 class="p-2"><img src="images/django-logo.png" alt="Django logo" class="w-10 h-auto"/></h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 image-container">
+                            <p class="hover-text">DJANGO REST</p>
+                            <h2 class="p-2"><img src="images/django-logo.png" alt="Django logo" class="w-10 h-auto"/></h2>
+                        </div>
+                        <div class="p-3 image-container">
+                            <p class="hover-text">Tailwind CSS</p>
+                            <h2 class="p-2"><img src="images/tailwind-css.png" alt="Tailwind CSS logo" class="w-10 h-auto"/></h2>
+                        </div>
+                        <div class="p-3 border-bottom border-info image-container">
+                            <p class="hover-text">Bootstrap</p>
+                            <h2 class="p-2"><img src="images/bootstrap-css.png" alt="Bootstrap logo" class="w-10 h-auto"/></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="https://www.linkedin.com/in/thato-theodore-choma-62372220b"><i class="bi bi-linkedin me-1"></i> LinkedIn</a>
+                <a href="https://www.facebook.com/profile.php?id=100067230612180"><i class="bi bi-facebook me-1"></i> Facebook</a>
+                <a href="mailto:thatochoma7@gmail.com"><i class="bi bi-envelope me-1"></i> Email</a>
+                <a href="https://github.com/Theodore110"><i class="bi bi-github me-1"></i> GitHub</a>
+            </div>
+        </div>
+        
+        <!-- Right Section - Visual -->
+        <div class="right-section d-flex align-items-center justify-content-center" style="background-image: url(images/profile.jpg);">
+            <div class="glass-card p-5 text-center">
+                <img src="images/profile.jpg" alt="Profile" class="mb-3" width="170" style="border-radius: 12px;">
+                <h2>Thato Theodore Choma</h2>
+                <p class="text-info">Certified Full Stack Developer</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="portfolio-title" id="projects">My Projects</h2>
+            <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="glass-card p-4 p-lg-5">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/Artist_Cave.png" alt="Image that displays the Artist Cave app" class="img-fluid rounded-top project-img"/>
+                </div>
+                <div class="p-6">
+                    <h3 class="portfolio-title">Artist Cave</h3>
+                    <p class="lead">Toolkit with all the resources needed for upcoming artists to launch their careers.</p>
+                    <a href="https://github.com/Theodore110/Music-App" class="btn btn-outline-info btn-sm mt-2">View on GitHub &rarr;</a>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 p-lg-5">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/Weather_App.png" alt="Image that displays the weather app" class="img-fluid rounded-top project-img"/>
+                </div>
+                <div class="p-6">
+                    <h3 class="portfolio-title">Weather App</h3>
+                    <p class="lead">App that can check the weather conditions of any city in the world and the max/min temperature of the following week.</p>
+                    <a href="https://github.com/Theodore110/Weather-App" class="btn btn-outline-info btn-sm mt-2">View on GitHub &rarr;</a>
+                </div>
+            </div>
+            
+            <div class="glass-card p-4 p-lg-5">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/Calculator_app.png" alt="Image that displays the calculator app" class="img-fluid rounded-top project-img"/>
+                </div>
+                <div class="p-6">
+                    <h3 class="portfolio-title">Calculator App</h3>
+                    <p class="lead">A calculator that can perform all basic mathematical operations.</p>
+                    <a href="https://github.com/Theodore110/Calculator-App" class="btn btn-outline-info btn-sm mt-2">View on GitHub &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section id="contact" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Contact Information</h3>
+                    <p class="text-white-600 mb-6">
+                        Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <a href="mailto:thatochoma7@gmail.com"><i class="bi bi-envelope text-blue-500"></i></a>
+                            </div>
+                            <a href="mailto:thatochoma7@gmail.com"><span class="text-gray-700">thatochoma7@gmail.com</span></a>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Follow Me</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Theodore110" class="social-icon w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-blue-100 hover:text-blue-500">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/thato-theodore-choma-62372220b" class="social-icon w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-blue-100 hover:text-blue-500">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100067230612180" class="social-icon w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-blue-100 hover:text-blue-500">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12">
+                    <form class="space-y-4" action="/contact" method="POST">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="text-dark w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="text-dark w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" name="message" class="text-dark w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-3 rounded-lg font-medium transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 Thato Theodore Choma. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="hover:text-blue-300">Home</a>
+                    <a href="#projects" class="hover:text-blue-300">Projects</a>
+                    <a href="#contact" class="hover:text-blue-300">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+
+    </script>
+</body>
+</html>
